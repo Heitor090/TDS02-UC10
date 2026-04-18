@@ -8,7 +8,7 @@ namespace ControleEstoque.API.Models
         public int Id { get; set; }
 
         [Required, StringLength(100)]
-        public string NomeFantasia { get; set; }
+        public string NomeFantasia { get; set; } 
 
         [Required, StringLength(14)]
         public string CNPJ { get; set; }

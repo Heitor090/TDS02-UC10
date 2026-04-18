@@ -1,4 +1,5 @@
-﻿using ControleEstoque.API.DTOs;
+﻿
+using ControleEstoque.API.DTOs;
 using ControleEstoque.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,0 +1,16 @@
+﻿using ControleEstoque.API.Models;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ControleEstoque.API.DTOs
+{
+    public class ProdutoDto
+    {
+     
+        public int Id { get; set; }       
+        public string Nome { get; set; }      
+        public decimal Preco { get; set; }  
+        public int QauntidadeEstoque { get; set; }       
+        public FornecedorDto Fornecedor { get; set; }
+    }
+}

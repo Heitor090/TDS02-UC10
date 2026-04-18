@@ -13,5 +13,6 @@ namespace ControleEstoque.API.Services
         Task AtualizarAsync( AtualizarFornecedorDto dto);
 
         Task RemoverAsync(int id);
+    
     }
 }
