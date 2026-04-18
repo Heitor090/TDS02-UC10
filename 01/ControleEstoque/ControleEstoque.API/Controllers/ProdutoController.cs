@@ -1,4 +1,5 @@
-﻿using ControleEstoque.API.Services;
+﻿using ControleEstoque.API.DTOs;
+using ControleEstoque.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,23 @@ namespace ControleEstoque.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
             => Ok(await _produtoService.ObterProdutoPorIdAsync(id));
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _produtoService.RemoverAsync(id);
+            return Ok("Produto removido com sucesso!");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromBody] CriarProdutoDto dto)
+        {
+            var produto = await _produtoService.CriarProdutoAsync(dto);
+            return Ok(produto);
+        }
+       
+
+
 
     }
 }
