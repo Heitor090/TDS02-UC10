@@ -1,4 +1,4 @@
-﻿using ControleEstoque.API.DTOs;
+﻿ using ControleEstoque.API.DTOs;
 using ControleEstoque.API.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -52,7 +52,7 @@ namespace ControleEstoque.API.Controllers
 
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id, DateTime dataVencimento)
+        public async Task<IActionResult> Delete(int id)
         {
             await _contaReceberService.DeletarAsync(id);
             return NoContent();

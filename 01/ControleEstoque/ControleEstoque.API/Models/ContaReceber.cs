@@ -20,7 +20,11 @@ namespace ControleEstoque.API.Models
         public DateTime? DataPagamento { get; set; }
 
         [Required, StringLength(20)]
-        public string Status { get; set; }  
+        public string Status { get; set; }
+
+        [Required]
+        public int ClienteId { get; set; }
+        public Cliente Cliente { get; set; }
 
     }
 }

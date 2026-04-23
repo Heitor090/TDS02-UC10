@@ -1,6 +1,8 @@
 ﻿using ControleEstoque.API.Data;
 using ControleEstoque.API.DTOs;
 using ControleEstoque.API.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ControleEstoque.API.Services
@@ -66,6 +68,7 @@ namespace ControleEstoque.API.Services
 
         public async Task<ProdutoDto>CriarProdutoAsync(CriarProdutoDto dto)
         {
+            var fornecedor = await _context.Fornecedores.FindAsync(dto.FornecedorId);
             var produto = new Produto()
             {
                 Nome = dto.Nome,
@@ -80,7 +83,26 @@ namespace ControleEstoque.API.Services
         }
         
 
-        public Task AtualizarProdutoAsync(ProdutoDto produtoDto)
+        public async Task AtualizarProdutoAsync(ProdutoDto produtoDto)
+        {
+            var produto = await _context.Produtos.FirstOrDefaultAsync(p => p.Id == produtoDto.Id);
+            if (produto != null)
+            {
+                var fornecedor = 
+                    await _context.Fornecedores.FindAsync(produtoDto.Fornecedor.Id);
+                if (fornecedor == null) throw new Exception("Fornecedor não encontrado");
+
+                produto.Nome = produtoDto.Nome;
+                produto.Preco = produtoDto.Preco;
+                produto.QauntidadeEstoque = produtoDto.QauntidadeEstoque;
+                produto.FornecedorId = produtoDto.Fornecedor.Id;
+                _context.Update(produto);
+                await _context.SaveChangesAsync();
+            }
+            ;
+        }
+
+        public Task AtualizarProdutoAsync(AtualizarProdutoDto dto)
         {
             throw new NotImplementedException();
         }

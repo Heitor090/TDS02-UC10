@@ -9,6 +9,7 @@ namespace ControleEstoque.API.Services
         Task RemoverAsync(int id);
         Task<ProdutoDto> CriarProdutoAsync(CriarProdutoDto criarProdutoDto);
          Task AtualizarProdutoAsync(ProdutoDto produtoDto);
+        Task AtualizarProdutoAsync(AtualizarProdutoDto dto);
     }
 }
 

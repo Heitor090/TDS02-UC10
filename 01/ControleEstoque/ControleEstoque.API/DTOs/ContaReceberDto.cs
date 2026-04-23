@@ -1,4 +1,6 @@
-﻿namespace ControleEstoque.API.DTOs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ControleEstoque.API.DTOs
 {
     public class ContaReceberDto
     {
@@ -10,6 +12,8 @@
             public DateTime? DataPagamento { get; set; }
             public string Status { get; set; }
 
+        public int ClienteId { get; set; }
+
     }
 
     public class CriarContaReceberDto
@@ -18,6 +22,9 @@
         public decimal Valor { get; set; }
         public DateTime DataVencimento { get; set; }
         public string Status { get; set; }
+
+        public int ClienteId { get; set; }
+
     }
 
     public class AtualizarContaReceberDto
@@ -28,5 +35,6 @@
             public DateTime DataVencimento { get; set; }
             public DateTime? DataPagamento { get; set; }
             public string Status { get; set; }
+        public int ClienteId { get; set; }
     }
 }

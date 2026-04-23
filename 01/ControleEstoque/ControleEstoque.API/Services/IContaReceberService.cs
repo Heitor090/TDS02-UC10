@@ -11,11 +11,11 @@ namespace ControleEstoque.API.Services
 
         Task <ContaReceberDto>CriarAsync(CriarContaReceberDto dto) ;
 
-        Task AtualizarAsync(AtualizarContaReceberDto dto, int id);
+        Task AtualizarAsync(AtualizarContaReceberDto dto);
 
         Task DeletarAsync(int id);
 
-        Task AtualizarAsync(AtualizarContaReceberDto dto);
+        
         DateTime GetDataVencimento();
         Task ObterPorIdAsync(int id);
     }

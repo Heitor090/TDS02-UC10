@@ -17,7 +17,7 @@ namespace ControleEstoque.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll() 
+        public async Task<IActionResult> GetAll()
             => Ok(await _produtoService.ObterTodosProdutosAsync());
 
         [HttpGet("{id}")]
@@ -37,9 +37,17 @@ namespace ControleEstoque.API.Controllers
             var produto = await _produtoService.CriarProdutoAsync(dto);
             return Ok(produto);
         }
-       
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] AtualizarProdutoDto dto)
+        {
+            if (id != dto.Id) return BadRequest("O Id da rota é difrente do id do Produto.");
+            await _produtoService.AtualizarProdutoAsync(dto);
+            return NoContent();
 
 
 
+
+        }
     }
 }
